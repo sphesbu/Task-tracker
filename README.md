@@ -39,8 +39,8 @@ Open index.html in your web browser.
 *Click Pause to stop tracking time.
 
 *Click Remove to delete a task from the list.
-![ScreenShoot]
-(https://github.com/sphesbu/Task-tracker/blob/main/TrackerScreenshoot.png)
+![ScreenShoot](https://github.com/sphesbu/Task-tracker/blob/main/TrackerScreenshoot.png?raw=true)
+
 
 
 
