@@ -1,20 +1,20 @@
-#Task Tracker
+# Task Tracker
 
-##Overview
+## Overview
 
 Task Tracker is a simple web application that helps users manage their tasks efficiently. It allows users to add, track, and remove tasks while also keeping track of time spent on each task. The app uses local storage to save tasks so that they persist even after refreshing the page.
 
-##Features
+## Features
 
-*Add new tasks with a simple input field.
+* Add new tasks with a simple input field.
 
-*Remove tasks when they are completed.
+* Remove tasks when they are completed.
 
-*Track the time spent on each task with a start/pause timer.
+* Track the time spent on each task with a start/pause timer.
 
-*Save tasks and their timers in local storage for persistence.
+* Save tasks and their timers in local storage for persistence.
 
-*Responsive and clean UI.
+* Responsive and clean UI.
 
 ##Installation
 
