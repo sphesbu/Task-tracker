@@ -22,7 +22,7 @@ To use the Task Tracker, follow these steps:
 
 Clone the repository:
 ```
-git clone https://github.com/yourusername/task-tracker.git
+git clone https://github.com/sphesbu/task-tracker.git
 ```
 Navigate to the project folder:
 ```
