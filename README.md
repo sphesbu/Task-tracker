@@ -40,7 +40,7 @@ Open index.html in your web browser.
 
 *Click Remove to delete a task from the list.
 ![ScreenShoot]
-()
+(https://github.com/sphesbu/Task-tracker/blob/main/TrackerScreenshoot.png)
 
 
 
