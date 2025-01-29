@@ -5,17 +5,155 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Task Tracker</title>
     <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .container {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 350px;
+        text-align: center;
+      }
+      h1 {
+        color: #333;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      li {
+        background: #e3e3e3;
+        margin: 5px 0;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 4px;
+        flex-wrap: wrap;
+      }
+      button {
+        background: #ff4d4d;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 4px;
+        margin-left: 5px;
+      }
+      button:hover {
+        background: #cc0000;
+      }
+      .timer-btn {
+        background: #007bff;
+      }
+      .timer-btn:hover {
+        background: #0056b3;
+      }
+      #taskInput {
+        width: calc(100% - 20px);
+        padding: 8px;
+        margin-top: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      .add-btn {
+        background: #28a745;
+        margin-top: 10px;
+      }
+      .add-btn:hover {
+        background: #218838;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
       <h1>Task Tracker</h1>
-      <ul id="tasks">
-        <li>Task 1</li>
-        <li>Task 2</li>
-        <li>Task 3</li>
-      </ul>
+      <ul id="tasks"></ul>
+      <input type="text" id="taskInput" placeholder="Enter a new task" />
+      <button class="add-btn" onclick="addTask()">Add Task</button>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+      let tasks = [];
+      let timers = {};
+
+      function loadTasks() {
+        const storedTasks = localStorage.getItem("tasks");
+        tasks = storedTasks ? JSON.parse(storedTasks) : [];
+        updateTasks();
+      }
+
+      function addTask() {
+        const taskInput = document.getElementById("taskInput");
+        const taskText = taskInput.value.trim();
+        if (taskText) {
+          tasks.push({ text: taskText, time: 0, running: false });
+          localStorage.setItem("tasks", JSON.stringify(tasks));
+          updateTasks();
+          taskInput.value = "";
+        }
+      }
+
+      function removeTask(index) {
+        clearInterval(timers[index]);
+        tasks.splice(index, 1);
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        updateTasks();
+      }
+
+      function toggleTimer(index) {
+        if (tasks[index].running) {
+          clearInterval(timers[index]);
+          tasks[index].running = false;
+        } else {
+          timers[index] = setInterval(() => {
+            tasks[index].time++;
+            updateTasks();
+          }, 1000);
+          tasks[index].running = true;
+        }
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        updateTasks();
+      }
+
+      function formatTime(seconds) {
+        const mins = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
+      }
+
+      function updateTasks() {
+        const taskList = document.getElementById("tasks");
+        taskList.innerHTML = "";
+        tasks.forEach((task, index) => {
+          const li = document.createElement("li");
+          li.innerHTML = `${task.text} - <span>${formatTime(task.time)}</span>`;
+          
+          const timerButton = document.createElement("button");
+          timerButton.textContent = task.running ? "Pause" : "Start";
+          timerButton.className = "timer-btn";
+          timerButton.onclick = () => toggleTimer(index);
+          
+          const removeButton = document.createElement("button");
+          removeButton.textContent = "Remove";
+          removeButton.onclick = () => removeTask(index);
+          
+          li.appendChild(timerButton);
+          li.appendChild(removeButton);
+          taskList.appendChild(li);
+        });
+      }
+
+      window.onload = loadTasks;
+    </script>
   </body>
 </html>
