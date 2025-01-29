@@ -16,7 +16,7 @@ Task Tracker is a simple web application that helps users manage their tasks eff
 
 * Responsive and clean UI.
 
-##Installation
+## Installation
 
 To use the Task Tracker, follow these steps:
 
@@ -30,32 +30,28 @@ cd task-tracker
 ```
 Open index.html in your web browser.
 
-##Usage
+## Usage
 
-*Enter a task in the input field and click Add Task.
+* Enter a task in the input field and click Add Task.
 
-*Click Start to begin tracking time for a task.
+* Click Start to begin tracking time for a task.
 
-*Click Pause to stop tracking time.
+* Click Pause to stop tracking time.
 
-*Click Remove to delete a task from the list.
+* Click Remove to delete a task from the list.
 ![ScreenShoot](https://github.com/sphesbu/Task-tracker/blob/main/TrackerScreenshoot.png?raw=true)
 
 
 
+## Technologies Used
 
+* HTML for structure
 
-Replace images/screenshot.png with the actual path to your image.
+* CSS for styling
 
-##Technologies Used
+* JavaScript for functionality
 
-*HTML for structure
-
-*CSS for styling
-
-*JavaScript for functionality
-
-*Local Storage for data persistence
+* Local Storage for data persistence
 
 License
 
